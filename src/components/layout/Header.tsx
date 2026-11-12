@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { Menu, Star } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from '@/components/common/ThemeToggle';
 import { NotificationButton } from '@/components/common/NotificationButton';
@@ -7,6 +7,7 @@ import { RoleSwitcher } from '@/components/common/RoleSwitcher';
 import { UserIdentity } from '@/components/common/UserIdentity';
 import { MobileNav } from '@/components/layout/MobileNav';
 import { Divider } from '@/components/ui/Divider';
+import logoSrc from '@/assets/logo.png';
 
 // ============================================================
 // SIRIUS — Application Header
@@ -53,9 +54,11 @@ export function Header({ className }: HeaderProps) {
 
             {/* Brand on mobile */}
             <div className="flex items-center gap-2">
-              <div className="flex items-center justify-center w-7 h-7 rounded-[8px] bg-gradient-to-br from-[#4C8CE4] to-[#406093]">
-                <Star size={13} className="text-white" fill="white" aria-hidden="true" />
-              </div>
+              <img
+                src={logoSrc}
+                alt="سيريوس"
+                className="w-7 h-7 rounded-[8px] object-contain"
+              />
               <span className="text-sm font-black text-[var(--text-primary)]">سيريوس</span>
             </div>
           </div>

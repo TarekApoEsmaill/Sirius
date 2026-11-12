@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Star } from 'lucide-react';
+import { X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useRole } from '@/contexts/RoleContext';
 import { useStore } from '@/contexts/StoreContext';
@@ -9,6 +9,7 @@ import { useWarehouse } from '@/contexts/WarehouseContext';
 import { getNavItems } from '@/data/navigation';
 import { RoleSwitcher } from '@/components/common/RoleSwitcher';
 import { UserIdentity } from '@/components/common/UserIdentity';
+import logoSrc from '@/assets/logo.png';
 import type { NavItem } from '@/types';
 
 // ============================================================
@@ -149,9 +150,11 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-4 border-b border-[var(--border-subtle)] shrink-0">
               <div className="flex items-center gap-2.5">
-                <div className="flex items-center justify-center w-8 h-8 rounded-[9px] bg-gradient-to-br from-[#4C8CE4] to-[#406093] shadow-[0_2px_6px_0_rgb(76_140_228/0.35)]">
-                  <Star size={15} className="text-white" fill="white" aria-hidden="true" />
-                </div>
+                <img
+                  src={logoSrc}
+                  alt="سيريوس"
+                  className="w-8 h-8 rounded-[9px] object-contain"
+                />
                 <span className="text-base font-black text-[var(--text-primary)]">سيريوس</span>
               </div>
 

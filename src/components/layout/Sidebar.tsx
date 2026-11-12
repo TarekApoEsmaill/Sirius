@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, PanelRightClose, PanelRightOpen, Star } from 'lucide-react';
+import { ChevronRight, PanelRightClose, PanelRightOpen } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useRole } from '@/contexts/RoleContext';
 import { useStore } from '@/contexts/StoreContext';
 import { useWarehouse } from '@/contexts/WarehouseContext';
 import { getNavItems } from '@/data/navigation';
+import logoSrc from '@/assets/logo.png';
 import type { NavItem } from '@/types';
 
 // ============================================================
@@ -27,9 +28,11 @@ function SiriusBrand({ collapsed }: { collapsed: boolean }) {
     <div className={cn('flex items-center gap-3 px-4 py-5', collapsed && 'justify-center px-0')}>
       {/* Logo mark */}
       <div className="relative shrink-0">
-        <div className="flex items-center justify-center w-9 h-9 rounded-[10px] bg-gradient-to-br from-[#4C8CE4] to-[#406093] shadow-[0_2px_8px_0_rgb(76_140_228/0.35)]">
-          <Star size={17} className="text-white" fill="white" aria-hidden="true" />
-        </div>
+        <img
+          src={logoSrc}
+          alt="سيريوس"
+          className="w-9 h-9 rounded-[10px] object-contain"
+        />
       </div>
 
       <AnimatePresence initial={false}>
