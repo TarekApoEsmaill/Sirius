@@ -96,11 +96,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
     return item;
   });
 
-  // Close on route change
-  const location = useLocation();
-  useEffect(() => {
-    onClose();
-  }, [location.pathname, onClose]);
+  // Close on route change is handled by onClick={onClose} in each MobileNavItem
 
   // Trap focus and handle Escape
   useEffect(() => {

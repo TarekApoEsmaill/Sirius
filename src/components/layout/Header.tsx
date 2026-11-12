@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Menu, Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from '@/components/common/ThemeToggle';
@@ -18,6 +18,7 @@ interface HeaderProps {
 
 export function Header({ className }: HeaderProps) {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const handleClose = useCallback(() => setMobileNavOpen(false), []);
 
   return (
     <>
@@ -85,7 +86,7 @@ export function Header({ className }: HeaderProps) {
       {/* Mobile Navigation Drawer */}
       <MobileNav
         open={mobileNavOpen}
-        onClose={() => setMobileNavOpen(false)}
+        onClose={handleClose}
       />
     </>
   );

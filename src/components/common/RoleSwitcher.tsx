@@ -71,8 +71,13 @@ export function RoleSwitcher({ compact = false, className }: RoleSwitcherProps) 
   }
 
   return (
-    <div className={cn('flex flex-col gap-1.5', className)}>
-      <p className="text-xs text-[var(--text-muted)] font-medium">تجربة النظام كـ</p>
+    <div className={cn('flex items-center gap-2.5', className)}>
+      {/* Label — same line, to the right of the pills */}
+      <p className="text-xs text-[var(--text-muted)] font-medium whitespace-nowrap leading-none">
+        تجربة النظام كـ
+      </p>
+
+      {/* Pills container */}
       <div
         role="radiogroup"
         aria-label="اختيار دور العرض"
@@ -88,8 +93,9 @@ export function RoleSwitcher({ compact = false, className }: RoleSwitcherProps) 
             aria-checked={role === r.value}
             onClick={() => handleSelect(r.value, r.path)}
             className={cn(
-              'relative flex flex-1 items-center justify-center gap-1.5',
-              'h-8 px-3 text-sm font-medium rounded-[var(--radius-sm)]',
+              'relative flex items-center justify-center gap-1.5',
+              'h-7 px-3 text-sm font-medium rounded-[var(--radius-sm)]',
+              'cursor-pointer select-none',
               'transition-colors duration-[120ms]',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4C8CE4]/40',
               role === r.value
@@ -97,14 +103,16 @@ export function RoleSwitcher({ compact = false, className }: RoleSwitcherProps) 
                 : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
             )}
           >
+            {/* Active background — pointer-events-none so it never blocks clicks */}
             {role === r.value && (
               <motion.div
                 layoutId="role-indicator"
-                className="absolute inset-0 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] shadow-[var(--shadow-1)]"
+                className="absolute inset-0 z-0 rounded-[var(--radius-sm)] bg-[var(--bg-surface)] shadow-[var(--shadow-1)] pointer-events-none"
                 transition={{ duration: 0.18, ease: [0, 0, 0.2, 1] }}
               />
             )}
-            <span className="relative z-10 flex items-center gap-1.5">
+            {/* Content sits above the animated background */}
+            <span className="relative z-10 flex items-center gap-1.5 pointer-events-none">
               {r.icon}
               {r.label}
             </span>

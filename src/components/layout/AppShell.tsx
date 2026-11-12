@@ -16,19 +16,16 @@ export function AppShell({ children, className }: AppShellProps) {
   return (
     <>
       {/* ── Skip to content (accessibility) ───────────────────
-          Visually hidden until focused via keyboard.
-          In RTL the link appears at top-right corner.           */}
+          Completely hidden from view and pointer events.
+          Only surfaces when keyboard-focused (Tab key).        */}
       <a
         href="#main-content"
         className={cn(
+          'sr-only focus:not-sr-only',
           'fixed top-3 end-3 z-[9999]',
           'px-4 py-2 rounded-[var(--radius-md)]',
           'bg-[#4C8CE4] text-white text-sm font-semibold',
           'shadow-[var(--shadow-3)]',
-          // Only visible when focused
-          'translate-x-full opacity-0',
-          'focus:translate-x-0 focus:opacity-100',
-          'transition-all duration-[120ms]',
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60'
         )}
       >
